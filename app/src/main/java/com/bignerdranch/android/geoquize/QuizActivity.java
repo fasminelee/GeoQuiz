@@ -14,7 +14,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mFalseButton;
     private Button mNextButton;
     private TextView mQuestionTextView;
-    
+
     private Question[] mQuestionBank = new Question[] {
             new Question(R.string.question_africa, false),
             new Question(R.string.question_americas, true),
@@ -29,6 +29,10 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
+        int question = mQuestionTextView[mCurrentIndex].getTextResId();
+        mQuestionTextView.setText(question);
 
         mTureButton = (Button) findViewById(R.id.true_button); // 引用组件
         mTureButton.setOnClickListener(new View.OnClickListener() {
