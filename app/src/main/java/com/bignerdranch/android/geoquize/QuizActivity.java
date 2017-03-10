@@ -56,5 +56,15 @@ public class QuizActivity extends AppCompatActivity {
             }
         }); // 设置监听器
 
+        mNextButton = (Button) findViewById(R.id.next_button);
+        mNextButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                int question = mQuestionBank[mCurrentIndex].getTextResId();
+                mQuestionTextView.setText(question);
+            }
+        }); // 设置监听器
+
     }
 }
