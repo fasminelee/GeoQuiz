@@ -59,10 +59,8 @@ public class QuizActivity extends AppCompatActivity {
         mTureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 响应点击事件
-                Toast.makeText(QuizActivity.this,
-                        R.string.incorrect_toast,
-                        Toast.LENGTH_SHORT).show();
+
+                cheakAnswer(true); // 响应点击事件
             }
         }); // 设置监听器
 
@@ -70,10 +68,8 @@ public class QuizActivity extends AppCompatActivity {
         mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 响应点击事件
-                Toast.makeText(QuizActivity.this,
-                        R.string.correct_toast,
-                        Toast.LENGTH_SHORT).show();
+
+                cheakAnswer(false); // 响应点击事件
             }
         }); // 设置监听器
 
