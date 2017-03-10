@@ -12,6 +12,18 @@ public class QuizActivity extends AppCompatActivity {
 
     private Button mTureButton;
     private Button mFalseButton;
+    private Button mNextButton;
+    private TextView mQuestionTextView;
+    
+    private Question[] mQuestionBank = new Question[] {
+            new Question(R.string.question_africa, false),
+            new Question(R.string.question_americas, true),
+            new Question(R.string.question_asia, true),
+            new Question(R.string.question_mideast, false),
+            new Question(R.string.question_oceans, true),
+    }; // Question 对象数组
+
+    private int mCurrentIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
