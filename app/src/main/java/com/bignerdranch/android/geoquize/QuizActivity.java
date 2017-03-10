@@ -1,12 +1,15 @@
 package com.bignerdranch.android.geoquize;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
+import android.widget.Toast;;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -24,6 +27,7 @@ public class QuizActivity extends AppCompatActivity {
     }; // Question 对象数组
 
     private int mCurrentIndex = 0;
+    private boolean mIsCheater;
 
     private  void updateQuestion() {
         int question = mQuestionBank[mCurrentIndex].getTextResId();

@@ -50,12 +50,12 @@
             android:text="@string/false_button" />
     </LinearLayout>
 
-    <!--上下页按钮-->
-
+    <!--下一页按钮-->
     <Button
         android:id="@+id/next_button"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_gravity="center"
         android:text="@string/next_button" />
 
 </LinearLayout>
