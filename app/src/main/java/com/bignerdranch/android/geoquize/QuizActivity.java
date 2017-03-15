@@ -1,16 +1,13 @@
 package com.bignerdranch.android.geoquize;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ImageButton;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -21,6 +18,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private ImageButton mPreviousButton;
     private ImageButton mNextButton;
+
+    private Button mCheatButton;
 
     private TextView mQuestionTextView;
 
@@ -79,7 +78,6 @@ public class QuizActivity extends AppCompatActivity {
         mTureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 cheakAnswer(true); // 响应点击事件
             }
         }); // 设置监听器
@@ -88,7 +86,6 @@ public class QuizActivity extends AppCompatActivity {
         mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 cheakAnswer(false); // 响应点击事件
             }
         }); // 设置监听器
@@ -111,6 +108,16 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View view){
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 updateQuestion();
+            }
+        }); // 设置监听器
+
+        mCheatButton = (Button) findViewById(R.id.cheat_button);
+        mCheatButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                // start CheatActivity
+                Intent intent = new Intent(QuizActivity.this, CheatActivity.class);
+                startActivity(intent);
             }
         }); // 设置监听器
 
