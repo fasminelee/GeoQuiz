@@ -14,6 +14,8 @@ import android.widget.ImageButton;
 
 public class QuizActivity extends AppCompatActivity {
 
+    private static final String KEY_INDEX = "index";
+
     private Button mTureButton;
     private Button mFalseButton;
 
@@ -111,6 +113,17 @@ public class QuizActivity extends AppCompatActivity {
                 updateQuestion();
             }
         }); // 设置监听器
+
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
         updateQuestion();
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle saveInstanceState) {
+        super.onSaveInstanceState(saveInstanceState);
+        saveInstanceState.putInt(KEY_INDEX, mCurrentIndex);
+    }
+
 }
