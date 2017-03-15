@@ -9,13 +9,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;;
+import android.widget.Toast;
+import android.widget.ImageButton;
 
 public class QuizActivity extends AppCompatActivity {
 
     private Button mTureButton;
     private Button mFalseButton;
-    private Button mNextButton;
+
+    private ImageButton mPreviousButton;
+    private ImageButton mNextButton;
+
     private TextView mQuestionTextView;
 
     private Question[] mQuestionBank = new Question[] {
@@ -29,11 +33,13 @@ public class QuizActivity extends AppCompatActivity {
     private int mCurrentIndex = 0;
     private boolean mIsCheater;
 
-    private  void updateQuestion() {
+    // 更新 UI
+    private void updateQuestion() {
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
     }
 
+    // 核对
     private void cheakAnswer(boolean userPressedTrue) {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTure();
 
@@ -58,6 +64,14 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
+        mQuestionTextView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                updateQuestion();
+            }
+        }); // 设置监听器
+        updateQuestion();
 
         mTureButton = (Button) findViewById(R.id.true_button); // 引用组件
         mTureButton.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +91,19 @@ public class QuizActivity extends AppCompatActivity {
             }
         }); // 设置监听器
 
-        mNextButton = (Button) findViewById(R.id.next_button);
+        mPreviousButton = (ImageButton) findViewById(R.id.previous_button);
+        mPreviousButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                if (mCurrentIndex > 0) {
+                    mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                    updateQuestion();
+                }
+            }
+        }); // 设置监听器
+        updateQuestion();
+
+        mNextButton = (ImageButton) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
