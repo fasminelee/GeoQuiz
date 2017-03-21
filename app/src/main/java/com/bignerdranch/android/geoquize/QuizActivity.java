@@ -116,7 +116,9 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 // start CheatActivity
-                Intent intent = new Intent(QuizActivity.this, CheatActivity.class);
+//                Intent intent = new Intent(QuizActivity.this, CheatActivity.class);
+                boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTure();
+                Intent intent = CheatActivity.newIntent(QuizActivity.this, answerIsTrue);
                 startActivity(intent);
             }
         }); // 设置监听器
